@@ -11,7 +11,7 @@ function resolve (dir) {
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
-  enforce: 'pre',
+  enforce: 'pre',  // 标识应用这些规则，即使规则覆盖（高级选项）
   include: [resolve('src'), resolve('test')],
   options: {
     formatter: require('eslint-friendly-formatter'),

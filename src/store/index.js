@@ -6,9 +6,9 @@ import permission from './modules/permission'
 import tagsView from './modules/tagsView'
 import user from './modules/user'
 import getters from './getters'
-
+// 使用 Vuex
 Vue.use(Vuex)
-
+// Vue的状态管理
 const store = new Vuex.Store({
   modules: {
     app,

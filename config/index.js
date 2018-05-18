@@ -17,7 +17,7 @@ module.exports = {
     port: 9527, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
-    notifyOnErrors: false,
+    notifyOnErrors: false,  // notify: 通知
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
     // Use Eslint Loader?

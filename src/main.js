@@ -1,17 +1,15 @@
 import Vue from 'vue'
+import Element from 'element-ui'
 
 import 'normalize.css/normalize.css'// A modern alternative to CSS resets
-
-import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
 import '@/styles/index.scss' // global css
 
 import App from './App'
 import router from './router'
 import store from './store'
-
 import i18n from './lang' // Internationalization
+
 import './icons' // icon
 import './errorLog'// error log
 import './permission' // permission control
@@ -34,7 +32,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  store,
+  store, // 在根实例中注册 store选项, 该 store 实例会注入到根组件下的所有子组件中，且子组件能通过 this.$store 访问到
   i18n,
   template: '<App/>',
   components: { App }

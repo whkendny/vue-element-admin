@@ -1,12 +1,15 @@
 import Cookies from 'js-cookie'
 
 const app = {
+  // state: 驱动应用的数据源
   state: {
     sidebar: {
+      // opened: 1, 闭合,  0, 打开
       opened: !+Cookies.get('sidebarStatus')
     },
     language: Cookies.get('language') || 'en'
   },
+  //
   mutations: {
     TOGGLE_SIDEBAR: state => {
       if (state.sidebar.opened) {

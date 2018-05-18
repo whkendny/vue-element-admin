@@ -13,7 +13,10 @@ import ScrollBar from '@/components/ScrollBar'
 
 export default {
   components: { SidebarItem, ScrollBar },
+  // 通过计算属性从sotre实例 中读取状态
   computed: {
+    // 在计算属性中 通过 mapGetters 辅助函数获取对应的状态
+    // `...`, 对象展开运算符, 将此对象混入到外部对象中
     ...mapGetters([
       'permission_routers',
       'sidebar'

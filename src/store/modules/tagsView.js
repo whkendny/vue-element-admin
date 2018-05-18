@@ -1,6 +1,8 @@
 const tagsView = {
-  state: {
-    visitedViews: [],
+  state:
+    // 用户访问过的页面 就是标签栏导航显示的一个个 tag 数组集合
+    visitedViews:
+    // 实际 keep-alive 的路由
     cachedViews: []
   },
   mutations: {
