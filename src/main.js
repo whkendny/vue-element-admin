@@ -19,10 +19,10 @@ import * as filters from './filters' // global filters
 
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
-  i18n: (key, value) => i18n.t(key, value)
+  i18n: (key, value) => i18n.t(key, value) // 在注册Element时设置i18n的处理方法
 })
 
-// register global utility filters.
+// register global utility filters. (全局注册Vue的过滤器)
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
