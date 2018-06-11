@@ -3,11 +3,12 @@ const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
+// 引入webpack-merge插件用来合并webpack配置对象，也就是说可以把webpack配置文件拆分成几个小的模块，然后合并
 const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.conf')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const portfinder = require('portfinder')
+const baseWebpackConfig = require('./webpack.base.conf') // 导入webpack基本配置
+const HtmlWebpackPlugin = require('html-webpack-plugin') //生成html文件
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin') // 对webpack编译出错进行处理
+const portfinder = require('portfinder') //获取port
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -16,41 +17,43 @@ function resolve (dir) {
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+// 合并webpack配置
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true }) // 样式的处理
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
 
-  // these devServer options should be customized in /config/index.js
+  // these devServer options should be customized(定制) in /config/index.js
   devServer: {
-    clientLogLevel: 'warning',
+    clientLogLevel: 'warning', // 在DevTools展示信息的配置, 可选值: none, error, warning or info (default)
     historyApiFallback: true,
     hot: true,
     compress: true,
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
+    open: config.dev.autoOpenBrowser, // 是否允许自动开启浏览器
+    overlay: config.dev.errorOverlay // 在浏览器中全屏显示编译错误或者警告
       ? { warnings: false, errors: true }
       : false,
-    publicPath: config.dev.assetsPublicPath,
+    publicPath: config.dev.assetsPublicPath, // 浏览器访问静态资源的路径
     proxy: config.dev.proxyTable,
-    quiet: true, // necessary for FriendlyErrorsPlugin
+    quiet: true, // necessary for FriendlyErrorsPlugin, 控制在控制台中输出的显示信息
     watchOptions: {
-      poll: config.dev.poll,
+      poll: config.dev.poll, // 轮询文件的更改
     }
   },
   plugins: [
+    // 在编译的时配置全局常量
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(),   // 启用热模块更新(HMR)
+    new webpack.NamedModulesPlugin(), // HMR shows correct file names and path in console on update.
+    new webpack.NoEmitOnErrorsPlugin(), // 跳过错误编译
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({ // 生成html
       filename: 'index.html',
       template: 'index.html',
       inject: true,

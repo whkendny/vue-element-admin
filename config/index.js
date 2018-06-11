@@ -6,22 +6,21 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
 
-    // Various Dev Server settings
+    // Various Dev Server settings (开发环境服务器的各种配置)
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 9527, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: true,
-    errorOverlay: true,
+    autoOpenBrowser: true, // 是否自动打开浏览器
+    errorOverlay: true, // 当有编译器错误时，是否在浏览器中显示全屏覆盖。
     notifyOnErrors: false,  // notify: 通知
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+    poll: false, //是否使用轮询,  https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
     // Use Eslint Loader?
-    // If true, your code will be linted during bundling and
+    // If true, your code will be linted（列出） during bundling（打包） and
     // linting errors and warnings will be shown in the console.
     useEslint: true,
     // If true, eslint errors and warnings will also be shown in the error overlay
@@ -33,7 +32,7 @@ module.exports = {
      */
 
     // https://webpack.js.org/configuration/devtool/#development
-    devtool: '#cheap-source-map',
+    devtool: '#cheap-source-map', // debtool是开发工具选项，用来指定如何生成sourcemap文件
 
     // If you have problems debugging vue-files in devtools,
     // set this to false - it *may* help
@@ -53,11 +52,11 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '../dist'), //E:\wwwroot\vue-element-admin\dist\
     assetsSubDirectory: 'static',
 
     // you can set by youself according to actual condition
-    assetsPublicPath: './',
+    assetsPublicPath: './', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
 
     /**
      * Source Maps

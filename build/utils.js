@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const config = require('../config')
+// 将文本从包或包中提取到单独的文件中。
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
 
@@ -67,6 +68,7 @@ exports.cssLoaders = function (options) {
 }
 
 // Generate loaders for standalone style files (outside of .vue)
+// 为独立样式文件生成装载器（.vue之外）
 exports.styleLoaders = function (options) {
   const output = []
   const loaders = exports.cssLoaders(options)
