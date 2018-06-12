@@ -15,23 +15,23 @@
 </template>
 
 <script>
-import screenfull from 'screenfull'
+import screenfull from 'screenfull' // 全屏插件
 
 export default {
   name: 'screenfull',
   props: {
-    width: {
-      type: Number,
-      default: 22
-    },
-    height: {
-      type: Number,
-      default: 22
-    },
-    fill: {
-      type: String,
-      default: '#48576a'
-    }
+    // width: {
+    //   type: Number,
+    //   default: 22
+    // },
+    // height: {
+    //   type: Number,
+    //   default: 22
+    // },
+    // fill: {
+    //   type: String,
+    //   default: '#48576a'
+    // }
   },
   data() {
     return {

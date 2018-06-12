@@ -1,4 +1,5 @@
 <template>
+  <!-- el-color-picker: 颜色选择器, https://element.faas.ele.me/#/zh-CN/component/color-picker#colorpicker-yan-se-xuan-ze-qi -->
   <el-color-picker
     class="theme-picker"
     popper-class="theme-picker-dropdown"
@@ -18,6 +19,7 @@ export default {
     }
   },
   watch: {
+    // watch theme的变化
     theme(val, oldVal) {
       if (typeof val !== 'string') return
       const themeCluster = this.getThemeCluster(val.replace('#', ''))

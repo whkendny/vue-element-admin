@@ -1,4 +1,5 @@
 <template>
+  <!-- 侧边导航栏 -->
   <scroll-bar>
     <el-menu mode="vertical" :default-active="$route.path" :collapse="isCollapse" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
       <sidebar-item :routes="permission_routers"></sidebar-item>
@@ -9,7 +10,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
-import ScrollBar from '@/components/ScrollBar'
+import ScrollBar from '@/components/ScrollBar' // 侧边导航栏滑动
 
 export default {
   components: { SidebarItem, ScrollBar },

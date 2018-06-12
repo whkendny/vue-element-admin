@@ -1,4 +1,7 @@
 <template>
+  <!-- 下拉菜单栏: https://element.faas.ele.me/#/zh-CN/component/dropdown#dropdown-xia-la-cai-dan
+  command: 指令事件, 点击菜单项后通过相对应的key触发
+-->
   <el-dropdown trigger="click" class='international' @command="handleSetLanguage">
     <div>
       <svg-icon class-name='international-icon' icon-class="language" />
@@ -37,5 +40,3 @@ export default {
   vertical-align: -5px!important;
 }
 </style>
-
-

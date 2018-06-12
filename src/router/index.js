@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-//  _import: 自定义加载方式, 区分在开发环境/发布环境中的加载, 开发环境不适用于懒加载
+//  _import: 自定义加载方式, 区分在开发环境/发布环境中的加载, 开发环境不适用于懒加载(每次更改代码触发热更新都会变得非常的慢)
 const _import = require('./_import_' + process.env.NODE_ENV)
 // in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
+// vue-loader中引入组件的变化:
+// 1. 通过 require 引入组件的话，全部改为 require(xxx).default
+// 2. 有异步引入组件的话，全部更新为动态 import 方式，() => import(xxx) => 进行懒加载处理
 
+// 注册 vue-router
 Vue.use(Router)
 
-/* Layout */
+/* Layout 侧边栏 */
 import Layout from '../views/layout/Layout'
 
 /** note: submenu only apppear when children.length>=1

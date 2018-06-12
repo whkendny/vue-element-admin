@@ -1,4 +1,5 @@
 <template>
+  <!-- 顶部Dashboard-->
   <el-menu class="navbar" mode="horizontal">
     <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
 
@@ -6,17 +7,20 @@
 
     <div class="right-menu">
       <error-log class="errLog-container right-menu-item"></error-log>
-
+      <!--el-tooltip: 文字提示: https://element.faas.ele.me/#/zh-CN/component/tooltip#tooltip-wen-zi-ti-shi -->
       <el-tooltip effect="dark" :content="$t('navbar.screenfull')" placement="bottom">
         <screenfull class="screenfull right-menu-item"></screenfull>
       </el-tooltip>
 
-      <lang-select class="international right-menu-item"></lang-select>
+      <el-tooltip effect="dark" content="语言选择" placement=bottom>
+        <lang-select class="international right-menu-item"></lang-select>
+      </el-tooltip>
 
       <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
         <theme-picker class="theme-switch right-menu-item"></theme-picker>
       </el-tooltip>
 
+      <!-- 用户个人操作 -->
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
@@ -44,12 +48,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
-import ErrorLog from '@/components/ErrorLog'
-import Screenfull from '@/components/Screenfull'
-import LangSelect from '@/components/LangSelect'
-import ThemePicker from '@/components/ThemePicker'
+import Breadcrumb from '@/components/Breadcrumb' // 三明治关闭组件
+import Hamburger from '@/components/Hamburger' // 收紧/展开 的 面包屑
+import ErrorLog from '@/components/ErrorLog' // bug tips
+import Screenfull from '@/components/Screenfull' // 全屏
+import LangSelect from '@/components/LangSelect' // 语言选择
+import ThemePicker from '@/components/ThemePicker' // 主题选择器
 
 export default {
   components: {
@@ -69,6 +73,7 @@ export default {
   },
   methods: {
     toggleSideBar() {
+      // console.log(this.$store)
       this.$store.dispatch('toggleSideBar')
     },
     logout() {

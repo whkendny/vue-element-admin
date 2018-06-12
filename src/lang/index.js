@@ -9,6 +9,7 @@ import zhLocale from './zh'
 Vue.use(VueI18n)
 
 const messages = {
+  // en: 英文语言包;  zh: 中文语言包
   en: {
     ...enLocale,
     ...elementEnLocale

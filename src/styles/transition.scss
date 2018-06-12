@@ -11,6 +11,7 @@
   opacity: 0;
 }
 
+// nav导航栏的动画
 /*fade*/
 .breadcrumb-enter-active,
 .breadcrumb-leave-active {
@@ -30,4 +31,3 @@
 .breadcrumb-leave-active {
   position: absolute;
 }
-

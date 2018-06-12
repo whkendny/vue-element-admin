@@ -1,6 +1,8 @@
 <template>
   <div v-if="errorLogs.length>0">
+    <!--  http://element-cn.eleme.io/#/zh-CN/component/badge#badge-biao-ji-->
     <el-badge :is-dot="true" style="line-height: 30px;" @click.native="dialogTableVisible=true">
+      <!-- @click="dialogTableVisible=true" 绑定到 `el-button` -->
       <el-button size="small" type="danger" class="bug-btn">
         <svg t="1492682037685" class="bug-svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1863"
           xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128">
@@ -10,13 +12,17 @@
       </el-button>
     </el-badge>
 
+    <!--修饰符`.sync`:  -->
+    <!--fullscreen modal :modal-append-to-body="false"  :lock-scroll="false"-->
     <el-dialog title="Error Log" :visible.sync="dialogTableVisible" width="80%">
+
       <el-table :data="errorLogs" border>
         <el-table-column label="Message">
+          <!-- slot-scope 作用域插槽: https://cn.vuejs.org/v2/guide/components-slots.html#作用域插槽 -->
           <template slot-scope="scope">
             <div>
               <span class="message-title">Msg:</span>
-              <el-tag type="danger">{{ scope.row.err.message }}</el-tag>
+              <el-tag type="danger"> {{ scope.row.err.message }}</el-tag>
             </div>
             <br/>
             <div>
@@ -30,11 +36,13 @@
             </div>
           </template>
         </el-table-column>
+
         <el-table-column label="Stack">
           <template slot-scope="scope">
             {{ scope.row.err.stack}}
           </template>
         </el-table-column>
+
       </el-table>
     </el-dialog>
 
